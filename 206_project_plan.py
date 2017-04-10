@@ -15,9 +15,10 @@ import collections # used for containers and Counter
 
 class MovieTestCases(unittest.TestCase):
 
+	# fetching data about movie
     base_url = "http://www.omdbapi.com/"
     parameters = {}
-    parameters["t"] = "mean girls"
+    parameters["t"] = "mean girls" # "t" came from the API pages, this is what the key is automatically
     response = requests.get(base_url, params=parameters)
     data = json.loads(response.text)
 
@@ -25,6 +26,7 @@ class MovieTestCases(unittest.TestCase):
     def test_movie_title(self):
         m = Movie(data)
         self.assertEqual(m.title, "Mean Girls")
+        self.assertEqual(type(m.title), str)
 
     # This will be testing the __str__ method for the class Movie and it's "output"
     def test_movie_str(self):
@@ -36,52 +38,32 @@ class MovieTestCases(unittest.TestCase):
         m = Movie(data)
         self.assertEqual(m.plot, "Cady Heron is a hit with The Plastics, the A-list girl clique at her new school, until she makes the mistake of falling for Aaron Samuels, the ex-boyfriend of alpha Plastic Regina George.")
 
-    # This will be testin gthe movie's release date
+    # This will be testin the movie's release date is a string
     def test_movie_released(self):
     	m = Movie(data)
     	self.assertEqual(m.released, "30 Apr 2004")
+    	self.assertEqual(m.released, str)
 
-    # This will be testing the actors
+    # This will be testing the actors and seeing if they appear in a list
     def test_movie_actors(self):
         m = Movie(data)
         self.assertEqual(m.actors, ["Lindsay Lohan", "Rachel McAdams", "Tina Fey", "Tim Meadows"])
-		self.assertEqual(len(m.actors), 4)
-		self.assertEqual(type(m.actors), list)
-
-	def test_movie_IMDBrating(self):
-		m = Movie(data)
-		self.assertEqual(m.IMDBrating, "84%")
+        self.assertEqual(len(m.actors), 4)
+        self.assertEqual(type(m.actors), list)
 
 
 
+class TwitterTestCases(unittest.TestCase):
 
-
-class DatabaseTests(unittest.TestCase):
-
-    def test_movie_db_columns1(self):
-        conn = sqlite3.connect('final_project.db')
-        cur = conn.cursor()
-        cur.execute('SELECT * FROM Movies')
-        result = cur.fetchall()
-        self.assertEqual(len(result[0]), 8)
-        conn.close()
-
-    def test_users_db_columns2(self):
-        conn = sqlite3.connect('final_project.db')
-        cur = conn.cursor()
-        cur.execute('SELECT * FROM Users')
-        result = cur.fetchall()
-        self.assertEqual(len(result[0]), 4)
-        conn.close()
-
-    def test_tweets_db_columns3(self):
-        conn = sqlite3.connect('final_project.db')
-        cur = conn.cursor()
-        cur.execute('SELECT * FROM Tweets')
-        result = cur.fetchall()
-        self.assertEqual(len(result[0]), 6)
-        conn.close()
-
+	def test_(self):
+		t = Tweet()
+		pass
+	def test_(self):
+		pass
+	def test_(self):
+		pass
+	def test_(self):
+		pass
 
 ## Remember to invoke all your tests...
 if __name__ == "__main__":

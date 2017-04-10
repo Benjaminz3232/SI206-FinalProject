@@ -138,12 +138,11 @@ ANOTHER METHOD:
 
 
 
->getActors
+>get_actors
 
 
 - What will the method do?
->The getActors method will return the number of actors in a particular movie in
-a list.
+>This will fetch a list of the main actors in the movie from the OMDB API
 
 
 
@@ -152,7 +151,7 @@ a list.
 - Will it take any additional input? 
 
 
->The getActors method will take an integer as input
+>No.
 
 
 - Will it return anything? Should it change anything about the instance/an instance
@@ -160,20 +159,15 @@ variable?
 
 
 
->
+>This method will return a list of the actors.
 
 
 - Why is it useful for this class definition, in this program?
 
 
 
->
-
-
-[If you definitely want to have a third, feel free to answer those questions a third
-time, because you'll have to do so eventually when you write documentation!]
-
-
+>Having a list of the actors is especially useful if a person wants to know which
+actors are in the movie they've provided.
 
 
 
@@ -183,22 +177,34 @@ time, because you'll have to do so eventually when you write documentation!]
 
 
 
-
+>Movies, Users and Tweets
 
 
 * What fields will each database table have? Which field of them is the primary key?
-You should list the fields for each database table here, e.g.
+You should list the fields for each database table here.
 Tweets:
-
-- text ... 
-
-(etc.)
+- tweet_
 
 
 
 
+id (primary key)
+- user_id
+- num_retweets
+- num_favorites
+- movie_title
 
+Users:
+- user_id (primary key)
+- screen_name
+- num_favorites
 
+Movies:
+- movie_id (primary key)
+- director
+- rating
+- num_languages
+- top_actor
 
 
 * List, in English, 2 queries you'll want to make from your database. At least one
@@ -213,8 +219,17 @@ favorited -- so I'll be joining the Tweets table and the Users table")
 
 
 
+>Query 1: I want to make a query that grabs data concerning movie titles which are
+mentioned in tweets, and the movie titles list, which will require me to join
+the Movies and Tweets tables.
+
+>Query 2: I am going to want to create a query that will access information about
+people posting the tweets, so I am going to need to join the Tweets and Users tables.
+
+
 
 * What are at least 2 of the data processing mechanics you're planning to use?
+>I am planning on using list comprehension and dictionary comprehension.
 
 
 
@@ -225,8 +240,11 @@ favorited -- so I'll be joining the Tweets table and the Users table")
 * Why will each of those be useful to you? What data might you use it on? 
 (e.g. "Set comprehension: I think I'm going to be looking for unique names and
 proper nouns in this big set of text, so I'm going to use a set comprehension").
->>>This is especially important if you are doing Option 3, but it's important for
-everyone!<<<
+>I am going to be using list comprehension so that I can query the Users database
+and create a list of users which will prove useful in terms of organizing a lot
+of data.
+>I will also need to use dictionary comprehension so that I can create a dicitonary
+with the twitter user_id as the keys and the content of their tweets as the values.
 
 
 
@@ -236,6 +254,6 @@ everyone!<<<
 
 * What will your output look like? Will it be a .txt file? a CSV file? something
 else? What information will it contain?
->>>This is especially important if you are doing Option 3, but it's important for
-everyone!<<<
-
+>The output will most likely be a text file that contains varied queried info
+concerning the movies such a movie with the highest rating, user with the most likes
+on their tweet, and more.
