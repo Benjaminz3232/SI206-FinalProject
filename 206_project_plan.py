@@ -11,6 +11,68 @@ import sqlite3
 import itertools # for generators and list comprehension
 import collections # used for containers and Counter
 
+
+
+##### Potential Functions/Sudo code ##############################
+
+
+#### def getTwitterInfo(username):
+#
+# PURPOSE: Making a call to the Tweepy API to get data about posted Tweets by the specified twitter user
+#
+# INPUT: twitter username
+#
+# RETURN: JSON object that can be used for extracting data later on
+#
+#
+#------------------------------------------------------------
+#
+#### def getOMDBInfo(search_info):
+# 
+# PURPOSE: Making a call to the OMDB API and requesting the specified data
+# 
+# INPUT: search terms like movie name, actors, director, IMDB rating, etc
+# 
+# RETURN: JSON object that can be used later for extracting data when necessary
+# 
+# API: http://www.omdbapi.com/?
+# 
+# EXAMPLE OF RETURN DATA:
+# {"Title":"Jason Bourne","Year":"2016","Rated":"PG-13","Released":"29 Jul 2016",
+#  "Runtime":"123 min","Genre":"Action, Thriller","Director":"Paul Greengrass",
+#  "Writer":"Paul Greengrass, Christopher Rouse, Robert Ludlum (characters)",
+#  "Actors":"Matt Damon, Tommy Lee Jones, Alicia Vikander, Vincent Cassel",
+#  "Plot":"The CIA's most dangerous former operative is drawn out of hiding to
+#   uncover more explosive truths about his past.","Language":"English, Greek, 
+#   German","Country":"UK, China, USA", "Awards":"13 nominations.", "Poster":
+#  "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU1ODg2OTU1MV5BMl5BanB
+#  nXkFtZTgwMzA5OTg2ODE@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie 
+#  Database","Value":"6.7/10"},{"Source":"Rotten Tomatoes","Value":"56%"},
+#  {"Source":"Metacritic","Value":"58/100"}],"Metascore":"58","imdbRating":
+#  "6.7","imdbVotes":"143,037","imdbID":"tt4196776","Type":"movie","DVD":
+#  "06 Dec 2016","BoxOffice":"$162,162,120.00","Production":"Universal",
+#  "Website":"http://www.jasonbournemovie.com/","Response":"True"}
+# 
+# ----------------------------------------------------------------
+# 
+# #### class Movie(self, OMDB_obj = {}):
+# 
+# PURPOSE: this class will be for the movie attributes (title, director, IMDB rating, actors, etc).
+# 
+# INPUT: The JSON object that will be extracted using the OMDB function from the getOMBDInfo function which grabs data from the OMDB API
+# 
+# RETURN: it would return a string method containing the information being searched for (director, title, IMDB rating, actors, etc)
+# 
+# CONSTRUCTOR: will be defining all of the self variables so that they may be used for further methods in the class
+# 
+#     METHODS: there will be methods with are dedicated to returning each of the stated elements (and possibly more). There will be a method whose purpose is to put the data in a format that will be easy to push it into a database. More methods are coming...
+# 
+# Other functions/classes/things are in the making/still being thought of...
+# 
+##################################################################
+
+
+
 # Write your test cases here.
 
 class MovieTestCases(unittest.TestCase):
@@ -66,12 +128,6 @@ class MovieTestCases(unittest.TestCase):
     def test_movie_actors_names(self):
     	m = Movie(data)
     	self.assertEqual(m.actors, "Lindsay Lohan, Rachel McAdams, Tina Fey, Tim Meadows")
-
-
-class TwitterTestCases(unittest.TestCase):
-	def test_tweet(self):
-		t = Tweet("Mark Waters")
-		self.assertEqual(type(t.director), str)
 
 
 ## Remember to invoke all your tests...
