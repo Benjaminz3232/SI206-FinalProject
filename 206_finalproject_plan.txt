@@ -167,11 +167,11 @@ variable?
 
 
 
-
+>
 
 
 [If you definitely want to have a third, feel free to answer those questions a third
-time, because you'll have to do so eventually. when you write documentation!]
+time, because you'll have to do so eventually when you write documentation!]
 
 
 
